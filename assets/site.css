@@ -93,27 +93,7 @@ a{color:inherit}
   object-position:center 34%;
   z-index:0;
 }
-/* 自动播放被浏览器策略拦住时才出现 */
-.hero-play{
-  position:absolute;
-  z-index:3;
-  inset:auto auto 1.5rem 50%;
-  transform:translateX(-50%);
-  display:none;
-  align-items:center;
-  gap:.5rem;
-  padding:.6rem 1.1rem;
-  border:0;
-  border-radius:0;
-  background:var(--ink);
-  color:var(--paper);
-  font-family:var(--sans);
-  font-size:.78rem;
-  font-weight:600;
-  letter-spacing:.06em;
-  cursor:pointer;
-}
-.hero[data-autoplay="blocked"] .hero-play{display:inline-flex}
+/* 自动播放被浏览器策略拦住时不显示任何 UI，静默重试 */
 
 .hero-band{
   position:relative;
@@ -214,13 +194,6 @@ a{color:inherit}
   margin-bottom:1.8rem;
   border-bottom:1.5px solid var(--ink);
 }
-.lede{
-  font-size:clamp(1.5rem,1rem + 2.1vw,2.6rem);
-  line-height:1.38;
-  font-weight:300;
-  max-width:19ch;
-  letter-spacing:-.015em;
-}
 .intro{max-width:46ch;margin-bottom:2.6rem;font-size:1.02rem}
 
 /* ---------- 三栏简述（首页关于区 / 简历技能区）---------- */
@@ -237,7 +210,6 @@ a{color:inherit}
   margin-bottom:.7rem;
 }
 .pairs p{font-size:1rem;line-height:1.7}
-.pairs--about{margin-top:3rem;max-width:60rem}
 .more{margin-top:2.4rem;font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.05em}
 .more a{text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:3px}
 .more a:hover{background:var(--signal)}
@@ -315,8 +287,40 @@ a{color:inherit}
 .edu-when{font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.05em;margin-left:auto}
 
 /* ==========================================================
-   页脚：三个页面同一个（电光蓝实色块）
+   页脚：首页为底部一条细带；内页仍用大联系块
    ========================================================== */
+.strip{
+  background:var(--electric);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.05em;
+}
+.strip-in{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.6rem 2rem;
+  padding-block:1.15rem;
+}
+.strip-mail{
+  text-decoration:none;
+  font-size:.92rem;
+  border-bottom:1.5px solid transparent;
+  transition:border-color .18s;
+}
+.strip-mail:hover{border-bottom-color:var(--paper)}
+.strip-nav{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem}
+.strip-nav a{
+  text-decoration:none;
+  border-bottom:1.5px solid rgba(253,251,247,.35);
+  padding-bottom:1px;
+  transition:border-color .18s;
+}
+.strip-nav a:hover{border-bottom-color:var(--paper)}
+.strip-copy{margin-left:auto;opacity:.65}
+
 .contact{
   background:var(--electric);
   color:var(--paper);
