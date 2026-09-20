@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>李阳 — 产品经理</title>
-<meta name="description" content="李阳，产品经理。做过的产品、写过的东西、以及怎么找到我。" />
+<title>作品与 Skill — 李阳</title>
+<meta name="description" content="李阳的作品与 Skill：PRD Generator、prd-skill、product-wiki 等。" />
 <meta property="og:title" content="李阳 — 产品经理" />
 <meta property="og:description" content="做过的产品、写过的东西、以及怎么找到我。" />
 <meta property="og:type" content="website" />
@@ -264,84 +264,117 @@ a{color:inherit}
   *{animation:none !important;transition:none !important}
 }
 </style>
-<script>
-/* 减弱动态偏好：不自动播放视频，停在海报帧 */
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const v = document.querySelector('.hero-video');
-  if (v) { v.removeAttribute('autoplay'); v.pause(); }
-}
-</script>
+</head>
+<style>
+/* ============ 作品页 masthead ============ */
+.masthead{background:var(--signal);padding-bottom:clamp(3rem,6vw,4.5rem)}
+.masthead .topbar{padding-block:2rem 0;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.masthead .topbar a{color:var(--ink)}
+.masthead h1{font-family:var(--sans);font-weight:900;font-size:clamp(2.8rem,8vw,6rem);line-height:.9;letter-spacing:-.045em}
+.masthead .role{font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.03em;margin-top:1.2rem}
+
+</style>
 </head>
 <body>
-
-<header class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
-    <source src="assets/hero.mp4" type="video/mp4" />
-  </video>
-
-  <div class="wrap topbar">
-    <span>李阳 / JOEY LI</span>
+<header class="masthead">
+    <div class="wrap topbar" style="animation:none">
+    <a class="logo" href="./" style="font-family:var(--sans);font-weight:900;text-decoration:none">李阳<span style="color:var(--signal)">.</span></a>
     <nav>
-      <a href="work.html">作品</a>
-      <a href="#about">关于</a>
+      <a href="./">首页</a>
       <a href="./resume.html">简历</a>
-      <a href="#contact">联系</a>
+      <a href="./#contact">联系</a>
     </nav>
   </div>
-
-  <div class="wrap hero-body">
-    <h1 class="name">李阳<span class="latin">AI Product Manager</span></h1>
-  </div>
-
   <div class="wrap">
-    <div class="hero-note">
-      <p>我做 AI 产品。从一个模糊的想法，到有人真的在用它。</p>
-      <p class="quiet">现在在明略科技 · 做妙啊和 Octo</p>
-    </div>
+    <h1>作品与 Skill</h1>
+    <p class="role">能把重复劳动交出去的东西</p>
   </div>
 </header>
 
 <main>
+  <section class="wrap" id="work" style="padding-block:clamp(3rem,6vw,5rem)">
+    <p class="work-intro">把写 PRD 的规则固化成开源工具，又给 Claude Code 写了一组 Skill，把每天重复的活儿——出原型、画流程图、维护知识库——交给它做。都是自用，不是演示。</p>
 
-  <section class="section wrap" id="about">
-    <p class="eyebrow">关于</p>
-    <p class="lede">
-      好产品不是功能的总和，是取舍的结果。
-    </p>
+    <div class="work">
+      <a class="item item--lg" href="https://github.com/JoeyLi2023/prd-generator">
+        <span class="item-yr">2026</span>
+        <span class="item-name">PRD Generator</span>
+        <span class="item-desc">
+          把我写 PRD 的规则固化成工具。上传原型图或粘贴需求，生成结构化初稿，我只回答判断题。
+          最花时间的不是让模型写得更多，而是让它少写——不写 UI 布局、不写视觉样式，那是设计稿的职责。
+          <span class="meta">个人项目 · 开源 · Next.js + Claude + Supabase</span>
+        </span>
+      </a>
 
-    <div class="about-grid">
-      <div>
-        <h3>做过什么</h3>
-        <p>4 年产品经验，在即时设计、百度、明略科技做过 AI 图像社区、文生 UI、搜索 AIGC 内容线、短视频制作平台和人机协作办公平台。两款从 0 到 1。</p>
+      <div class="item item--static">
+        <span class="item-yr">PRD</span>
+        <span class="item-name">prd-skill</span>
+        <span class="item-desc">
+          写产品需求文档。按复杂度分三档（≤20 行 / ≤50 行 / 按需），带 Triage 流程和验收标准。目标不是写得最全，是让工程师不用反复来问。
+          <span class="meta">7 个参考文件 · 模板 + 检查清单</span>
+        </span>
       </div>
-      <div>
-        <h3>怎么做事</h3>
-        <p>先把问题问清楚，再谈方案。大部分需求在被写成文档之前，就该被砍掉一半。工具能自动化的部分，我不手写第二遍。</p>
+
+      <div class="item item--static">
+        <span class="item-yr">知识库</span>
+        <span class="item-name">product-wiki</span>
+        <span class="item-desc">
+          一个知识库编译器。把飞书里堆着的播客访谈、文章等原始资料，自动编译成人物摘要 + 概念文章 + 索引。
+          <span class="meta">飞书 API · 增量更新</span>
+        </span>
       </div>
-      <div>
-        <h3>手上的工具</h3>
-        <p>Figma、SQL、Claude Code，以及自己写的一堆 Skill。原型是用来扔掉的，想清楚才是目的。</p>
+
+      <div class="item item--static">
+        <span class="item-yr">设计</span>
+        <span class="item-name">ui-design-guide</span>
+        <span class="item-desc">
+          说「这个页面太乱了」的时候用。分析现有 UI 问题 → 给多个方案 → 用 HTML 原型展示 → 确认后才改代码。
+          <span class="meta">支持截图输入</span>
+        </span>
+      </div>
+
+      <div class="item item--static">
+        <span class="item-yr">原型</span>
+        <span class="item-name">html-prototype</span>
+        <span class="item-desc">
+          把 PRD 或设计方案变成单文件可交互原型。不用说「用 HTML」，说「做个页面看看」就行。
+          <span class="meta">单文件 · 可点击</span>
+        </span>
+      </div>
+
+      <div class="item item--sm item--static">
+        <span class="item-yr">图</span>
+        <span class="item-name">mermaid-flowchart</span>
+        <span class="item-desc">
+          把 PRD 和功能文档转成 Mermaid 流程图、架构图、状态图。
+          <span class="meta">Mermaid</span>
+        </span>
+      </div>
+
+      <div class="item item--sm item--static">
+        <span class="item-yr">内部</span>
+        <span class="item-name">octo-prd</span>
+        <span class="item-desc">
+          prd-skill 的定制版，接上了团队的 Issue triage 与评审流转。因含公司内部信息，不开源。
+          <span class="meta">不公开</span>
+        </span>
       </div>
     </div>
-    <p class="about-more"><a href="./resume.html">看完整履历</a></p>
   </section>
+
 
 </main>
 
-<footer class="contact" id="contact">
+<footer class="contact" id="contact" style="padding-block:3rem">
   <div class="wrap">
-    <p class="eyebrow">联系</p>
-    <a class="contact-mail" href="mailto:joeyli2023@gmail.com">joeyli2023@gmail.com</a>
-
-    <div class="elsewhere">
-      <a href="https://weibo.com/u/7821111806" target="_blank" rel="noopener">微博</a>
-      <a href="https://github.com/JoeyLi2023" target="_blank" rel="noopener">GitHub</a>
-      <a href="./resume.html">简历</a>
-    </div>
-
-    <p class="colophon">© 2026 李阳 · 本站托管于 GitHub Pages</p>
+    <p class="foot-links" style="display:flex;flex-wrap:wrap;gap:.7rem 2rem;font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.05em">
+      <a href="mailto:joeyli2023@gmail.com" style="text-decoration:none;border-bottom:1.5px solid rgba(253,251,247,.35);padding-bottom:2px">joeyli2023@gmail.com</a>
+      <a href="https://weibo.com/u/7821111806" target="_blank" rel="noopener" style="text-decoration:none;border-bottom:1.5px solid rgba(253,251,247,.35);padding-bottom:2px">微博</a>
+      <a href="https://github.com/JoeyLi2023" target="_blank" rel="noopener" style="text-decoration:none;border-bottom:1.5px solid rgba(253,251,247,.35);padding-bottom:2px">GitHub</a>
+      <a href="./" style="text-decoration:none;border-bottom:1.5px solid rgba(253,251,247,.35);padding-bottom:2px">首页</a>
+    </p>
+    <p class="colophon" style="margin-top:2.5rem">© 2026 李阳</p>
   </div>
 </footer>
-
 </body>
 </html>
