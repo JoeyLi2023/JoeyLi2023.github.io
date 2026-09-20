@@ -301,8 +301,9 @@ a{color:inherit}
   display:flex;
   flex-wrap:wrap;
   align-items:baseline;
-  gap:.6rem 2rem;
-  padding-block:1.15rem;
+  justify-content:space-between;
+  gap:.5rem 2rem;
+  padding-block:.85rem;
 }
 .strip-mail{
   text-decoration:none;
@@ -311,15 +312,13 @@ a{color:inherit}
   transition:border-color .18s;
 }
 .strip-mail:hover{border-bottom-color:var(--paper)}
-.strip-nav{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem}
-.strip-nav a{
+.strip-link{
   text-decoration:none;
   border-bottom:1.5px solid rgba(253,251,247,.35);
   padding-bottom:1px;
   transition:border-color .18s;
 }
-.strip-nav a:hover{border-bottom-color:var(--paper)}
-.strip-copy{margin-left:auto;opacity:.65}
+.strip-link:hover{border-bottom-color:var(--paper)}
 
 .contact{
   background:var(--electric);
