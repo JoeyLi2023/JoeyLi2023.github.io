@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>简历 — 李阳</title>
+<meta name="description" content="李阳，AI 产品经理。4 年产品经验，主导过 2 款 0 到 1 的 AI 产品。" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FF4D1C'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;900&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Noto+Sans+SC:wght@500;900&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --paper:#FDFBF7;
+  --ink:#0F0F0F;
+  --signal:#FF4D1C;
+  --electric:#1A3FD9;
+  --sand:#E8E4DA;
+  --sans:'Archivo','Noto Sans SC','Arial Black','Helvetica Neue','PingFang SC',sans-serif;
+  --serif:'Newsreader','Noto Serif SC',Georgia,'Songti SC',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--serif);
+  font-size:clamp(1rem,.95rem + .25vw,1.08rem);
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+::selection{background:var(--signal);color:var(--paper)}
+:focus-visible{outline:3px solid var(--electric);outline-offset:3px}
+.wrap{width:min(860px,100% - 3rem);margin-inline:auto}
+
+/* 顶部橙条：与首页同一套语言，但这里是阅读页，不占满屏 */
+.masthead{background:var(--signal);padding-block:2rem 3.2rem}
+.masthead .back{
+  display:inline-block;
+  font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.06em;
+  text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;
+  transition:border-color .18s;
+}
+.masthead .back:hover{border-bottom-color:currentColor}
+.masthead h1{
+  font-family:var(--sans);font-weight:900;
+  font-size:clamp(2.8rem,9vw,5.5rem);
+  line-height:.9;letter-spacing:-.045em;
+  margin-top:2.6rem;
+}
+.masthead .role{
+  font-family:var(--sans);font-size:clamp(.9rem,.8rem + .3vw,1.1rem);
+  font-weight:600;letter-spacing:.02em;margin-top:.9rem;
+}
+.masthead .reach{
+  margin-top:1.6rem;font-family:var(--sans);
+  font-size:.85rem;font-weight:500;letter-spacing:.03em;
+  display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;
+}
+.masthead .reach a{text-decoration:none;border-bottom:1.5px solid rgba(15,15,15,.32);padding-bottom:1px}
+.masthead .reach a:hover{border-bottom-color:var(--ink)}
+
+main{padding-block:clamp(3rem,7vw,5rem)}
+.block{margin-bottom:clamp(2.8rem,6vw,4.2rem)}
+.block:last-child{margin-bottom:0}
+
+h2{
+  font-family:var(--sans);font-size:.8rem;font-weight:600;
+  letter-spacing:.1em;color:var(--signal);
+  padding-bottom:.8rem;margin-bottom:1.8rem;
+  border-bottom:1.5px solid var(--ink);
+}
+
+.summary{font-size:clamp(1.1rem,1rem + .6vw,1.45rem);line-height:1.55;font-weight:300;letter-spacing:-.008em}
+
+/* 一段经历 */
+.job{margin-bottom:2.8rem}
+.job:last-child{margin-bottom:0}
+.job-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;margin-bottom:.3rem}
+.job-co{font-family:var(--sans);font-size:1.45rem;font-weight:900;letter-spacing:-.025em}
+.job-role{font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.03em}
+.job-when{
+  font-family:var(--sans);font-size:.78rem;font-weight:500;
+  letter-spacing:.05em;margin-left:auto;white-space:nowrap;
+}
+
+/* 一条产品线 */
+.line{margin-top:1.5rem;padding-left:1.1rem;border-left:2.5px solid var(--sand)}
+.line-name{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:-.01em}
+.line-what{font-size:.96rem;margin-top:.15rem}
+.line-role{font-size:.96rem;margin-top:.5rem}
+.line ul{margin-top:.7rem;padding-left:1.1rem}
+.line li{font-size:.96rem;margin-bottom:.4rem}
+.line li::marker{color:var(--signal)}
+
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.6rem 2.4rem}
+.pairs h3{font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.06em;margin-bottom:.5rem}
+.pairs p{font-size:.96rem}
+
+.edu{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem 1rem;margin-bottom:.7rem}
+.edu-school{font-family:var(--sans);font-size:1rem;font-weight:600}
+.edu-major{font-size:.96rem}
+.edu-when{font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.05em;margin-left:auto}
+
+footer{background:var(--electric);color:var(--paper);padding-block:3rem;margin-top:clamp(3rem,7vw,5rem)}
+footer a{text-decoration:none;border-bottom:1.5px solid rgba(253,251,247,.35);padding-bottom:2px}
+footer a:hover{border-bottom-color:var(--paper)}
+.foot-links{display:flex;flex-wrap:wrap;gap:.7rem 2rem;font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.05em}
+.foot-note{margin-top:2rem;font-family:var(--sans);font-size:.74rem;font-weight:500;letter-spacing:.04em;opacity:.7}
+
+@media print{
+  .masthead{background:none;padding-block:0 1.5rem}
+  .masthead .back,footer{display:none}
+  body{font-size:10.5pt;line-height:1.5}
+  .job{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="back" href="./">← 返回首页</a>
+    <h1>李阳</h1>
+    <p class="role">AI 产品经理</p>
+    <p class="reach">
+      <a href="mailto:joeyli2023@gmail.com">joeyli2023@gmail.com</a>
+      <a href="https://weibo.com/u/7821111806" target="_blank" rel="noopener">微博</a>
+      <a href="https://github.com/JoeyLi2023" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>个人总结</h2>
+    <p class="summary">
+      4 年+ 产品经验、2 年+ 管理经验，先后在即时设计、明略科技主导过 2 款从 0 到 1 的 AI 产品，带过 20+ 人业务团队，对工具型 AI 产品有较多积累。
+    </p>
+  </section>
+
+  <section class="block">
+    <h2>工作经历</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-co">明略科技</span>
+        <span class="job-role">AI 产品经理</span>
+        <span class="job-when">2025.08 — 至今</span>
+      </div>
+
+      <div class="line">
+        <p class="line-name">妙啊</p>
+        <p class="line-what">面向专业电商内容团队的一站式投流短视频制作平台。</p>
+        <p class="line-role">产品负责人，从 0 到 1 定义产品，牵头研发与设计团队完成落地。</p>
+        <ul>
+          <li>主导「灵感拆解 → 需求管理 → AI 内容生产 → 批量混剪 → 投放」全链路产品设计，完成 PMF 验证</li>
+          <li>主导 AI 原生基建从 0 到 1 落地，作为智能检索镜头、批量裂变生产等能力的底座</li>
+          <li>负责定价方案与售前 go-to-market，产品已正式对外售卖</li>
+        </ul>
+      </div>
+
+      <div class="line">
+        <p class="line-name">Octo</p>
+        <p class="line-what">企业级 AI 办公平台。</p>
+        <p class="line-role">Loop 方向产品负责人，负责人与 Agent 协作空间的产品定义与迭代。</p>
+        <ul>
+          <li>定义并落地以任务为中心的人 + Agent 协作空间，构建「委托 → 拆解 → 分配 → 执行 → 验收」完整任务链路</li>
+          <li>设计任务状态机、上下文隔离与能力沉淀机制，解决 AI 协作中状态不可见、责任不可追溯、能力不沉淀的问题</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-co">百度</span>
+        <span class="job-role">AI 产品经理</span>
+        <span class="job-when">2025.04 — 2025.07</span>
+      </div>
+      <div class="line">
+        <p class="line-what">百度搜索 AIGC 长图文生产线：通过 AIGC 内容供给反哺搜索内容生态，解决长尾搜索词结果不足导致用户流失的问题。</p>
+        <p class="line-role">负责长图文内容生产策略，主导内容从「通用生产」到「品质化 + 热点联动」的策略升级。</p>
+        <ul>
+          <li>建立「有观点、有态度、易阅读」的内容品质模版 20+ 套，打破 AIGC 内容等于低质的认知，提高整站分发</li>
+          <li>设计「通用生产策略 + 热点话题」双轨内容机制，孵化爆款文章，单篇互动量最高 1.3 万</li>
+          <li>输出可复用的 AIGC 内容生产 SOP，为搜索内容生态后续业务线提供支撑</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-co">即时设计</span>
+        <span class="job-role">AI 产品经理</span>
+        <span class="job-when">2022.11 — 2025.02</span>
+      </div>
+
+      <div class="line">
+        <p class="line-name">AI.art</p>
+        <p class="line-what">AI 图像创作与消费社区。</p>
+        <p class="line-role">0 → 1 核心产品负责人，主导 UGC 创作工具与内容社区双端产品设计。</p>
+        <ul>
+          <li>主导搭建具备多模型组合与拼版能力的 UGC 创作工具</li>
+          <li>通过 ControlNet + VLM 方案显著降低创作门槛</li>
+          <li>建立「选题 → 生成 → 反馈 → 回流」内容生产闭环</li>
+        </ul>
+      </div>
+
+      <div class="line">
+        <p class="line-name">即时 AI</p>
+        <p class="line-what">AI 2 UI，文生 UI 设计稿。</p>
+        <p class="line-role">产品经理，负责产品定义、模型应用与能力产品化。</p>
+        <ul>
+          <li>落地 UI 设计领域的 LLM 应用，主导两套视觉生成模型的对比选型与效果评测</li>
+          <li>独立页面、成套页面两套生成范式完整落地，成为即时设计 AI 能力的重要组成</li>
+          <li>缩短设计师布局与风格处理时间，并反哺组件库沉淀</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>技能与工具</h2>
+    <div class="pairs">
+      <div>
+        <h3>AI 核心栈</h3>
+        <p>LLM 应用（模型选型与评测）、Prompt Engineering、RAG、多模态生成、ControlNet / VLM、效果评测体系搭建</p>
+      </div>
+      <div>
+        <h3>产品工具</h3>
+        <p>Figma、Axure、即时设计、Notion、Linear、飞书、墨刀</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>教育经历</h2>
+    <div class="edu">
+      <span class="edu-school">同济大学</span>
+      <span class="edu-major">市政工程 · 硕士</span>
+      <span class="edu-when">2019 — 2022</span>
+    </div>
+    <div class="edu">
+      <span class="edu-school">湖南大学</span>
+      <span class="edu-major">给排水科学与工程 · 本科</span>
+      <span class="edu-when">2014 — 2018</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-links">
+      <a href="mailto:joeyli2023@gmail.com">joeyli2023@gmail.com</a>
+      <a href="https://weibo.com/u/7821111806" target="_blank" rel="noopener">微博</a>
+      <a href="https://github.com/JoeyLi2023" target="_blank" rel="noopener">GitHub</a>
+      <a href="./">首页</a>
+    </p>
+    <p class="foot-note">© 2026 李阳</p>
+  </div>
+</footer>
+
+</body>
+</html>

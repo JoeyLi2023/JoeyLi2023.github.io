@@ -159,8 +159,12 @@ a{color:inherit}
   margin-bottom:.7rem;
 }
 .about-grid p{font-size:1rem;line-height:1.7}
+.about-more{margin-top:2.4rem;font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.05em}
+.about-more a{text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:3px}
+.about-more a:hover{background:var(--signal)}
 
 /* ============ 项目：不等宽横向条带 ============ */
+.work-intro{max-width:46ch;margin-bottom:2.6rem;font-size:1.02rem}
 .work{border-top:1.5px solid var(--ink)}
 .item{
   display:grid;
@@ -173,6 +177,9 @@ a{color:inherit}
   transition:background-color .2s,padding-left .2s;
 }
 .item:hover,.item:focus-visible{background:var(--signal);padding-left:1.4rem}
+/* 暂无可跳转的公开地址：不给 hover 反馈，免得看起来能点 */
+.item--static{cursor:default}
+.item--static:hover{background:none;padding-left:0}
 .item-yr{
   font-family:var(--sans);
   font-size:.8rem;
@@ -267,21 +274,21 @@ a{color:inherit}
   <div class="wrap topbar">
     <span>李阳 / JOEY LI</span>
     <nav>
-      <a href="#work">项目</a>
+      <a href="#work">Skill</a>
       <a href="#about">关于</a>
+      <a href="./resume.html">简历</a>
       <a href="#contact">联系</a>
     </nav>
   </div>
 
   <div class="wrap hero-body">
-    <h1 class="name">李阳<span class="latin">Product Manager</span></h1>
+    <h1 class="name">李阳<span class="latin">AI Product Manager</span></h1>
   </div>
 
   <div class="wrap">
     <div class="hero-note">
-      <!-- ▼ 待替换：用你自己的话重写这两句 -->
-      <p>我做产品。从一个模糊的想法，到有人真的在用它。</p>
-      <p class="quiet">现居 —— 城市 · 在 —— 公司</p>
+      <p>我做 AI 产品。从一个模糊的想法，到有人真的在用它。</p>
+      <p class="quiet">现在在明略科技 · 做妙啊和 Octo</p>
     </div>
   </div>
 </header>
@@ -291,28 +298,29 @@ a{color:inherit}
   <section class="section wrap" id="about">
     <p class="eyebrow">关于</p>
     <p class="lede">
-      好产品不是功能的<em>总和</em>，是取舍的结果。
+      好产品不是功能的总和，是取舍的结果。
     </p>
 
     <div class="about-grid">
-      <!-- ▼ 待替换：三段各写 2-3 句，说清你怎么工作 -->
       <div>
-        <h3>我怎么做事</h3>
-        <p>先把问题问清楚，再谈方案。大部分需求在被写成文档之前，就该被砍掉一半。</p>
+        <h3>做过什么</h3>
+        <p>4 年产品经验，在即时设计、百度、明略科技做过 AI 图像社区、文生 UI、搜索 AIGC 内容线、短视频制作平台和人机协作办公平台。两款从 0 到 1。</p>
       </div>
       <div>
-        <h3>我关注什么</h3>
-        <p>用户真实的使用路径，而不是我们希望他们走的那条。数据能说明发生了什么，访谈才能说明为什么。</p>
+        <h3>怎么做事</h3>
+        <p>先把问题问清楚，再谈方案。大部分需求在被写成文档之前，就该被砍掉一半。工具能自动化的部分，我不手写第二遍。</p>
       </div>
       <div>
-        <h3>我的工具</h3>
-        <p>Figma、SQL、以及一支笔。原型是用来扔掉的，想清楚才是目的。</p>
+        <h3>手上的工具</h3>
+        <p>Figma、SQL、Claude Code，以及自己写的一堆 Skill。原型是用来扔掉的，想清楚才是目的。</p>
       </div>
     </div>
+    <p class="about-more"><a href="./resume.html">看完整履历</a></p>
   </section>
 
   <section class="section wrap" id="work">
-    <p class="eyebrow">项目</p>
+    <p class="eyebrow">项目与 Skill</p>
+    <p class="work-intro">把写 PRD 的规则固化成开源工具，又给 Claude Code 写了一组 Skill，把每天重复的活儿——出原型、画流程图、维护知识库——交给它做。都是自用，不是演示。</p>
 
     <div class="work">
       <a class="item item--lg" href="https://github.com/JoeyLi2023/prd-generator">
@@ -325,6 +333,59 @@ a{color:inherit}
         </span>
       </a>
 
+      <div class="item item--static">
+        <span class="item-yr">PRD</span>
+        <span class="item-name">prd-skill</span>
+        <span class="item-desc">
+          写产品需求文档。按复杂度分三档（≤20 行 / ≤50 行 / 按需），带 Triage 流程和验收标准。目标不是写得最全，是让工程师不用反复来问。
+          <span class="meta">7 个参考文件 · 模板 + 检查清单</span>
+        </span>
+      </div>
+
+      <div class="item item--static">
+        <span class="item-yr">知识库</span>
+        <span class="item-name">product-wiki</span>
+        <span class="item-desc">
+          一个知识库编译器。把飞书里堆着的播客访谈、文章等原始资料，自动编译成人物摘要 + 概念文章 + 索引。
+          <span class="meta">飞书 API · 增量更新</span>
+        </span>
+      </div>
+
+      <div class="item item--static">
+        <span class="item-yr">设计</span>
+        <span class="item-name">ui-design-guide</span>
+        <span class="item-desc">
+          说「这个页面太乱了」的时候用。分析现有 UI 问题 → 给多个方案 → 用 HTML 原型展示 → 确认后才改代码。
+          <span class="meta">支持截图输入</span>
+        </span>
+      </div>
+
+      <div class="item item--static">
+        <span class="item-yr">原型</span>
+        <span class="item-name">html-prototype</span>
+        <span class="item-desc">
+          把 PRD 或设计方案变成单文件可交互原型。不用说「用 HTML」，说「做个页面看看」就行。
+          <span class="meta">单文件 · 可点击</span>
+        </span>
+      </div>
+
+      <div class="item item--sm item--static">
+        <span class="item-yr">图</span>
+        <span class="item-name">mermaid-flowchart</span>
+        <span class="item-desc">
+          把 PRD 和功能文档转成 Mermaid 流程图、架构图、状态图。
+          <span class="meta">Mermaid</span>
+        </span>
+      </div>
+
+      <div class="item item--sm item--static">
+        <span class="item-yr">内部</span>
+        <span class="item-name">octo-prd</span>
+        <span class="item-desc">
+          prd-skill 的定制版，接上了团队的 Issue triage 与评审流转。因含公司内部信息，不开源。
+          <span class="meta">不公开</span>
+        </span>
+      </div>
     </div>
   </section>
 
@@ -333,13 +394,12 @@ a{color:inherit}
 <footer class="contact" id="contact">
   <div class="wrap">
     <p class="eyebrow">联系</p>
-    <!-- ▼ 待替换：换成你的真实邮箱 -->
-    <a class="contact-mail" href="mailto:hello@example.com">hello@example.com</a>
+    <a class="contact-mail" href="mailto:joeyli2023@gmail.com">joeyli2023@gmail.com</a>
 
     <div class="elsewhere">
-      <a href="https://github.com/JoeyLi2023">GitHub</a>
-      <a href="#">微信</a>
-      <a href="#">即刻</a>
+      <a href="https://weibo.com/u/7821111806" target="_blank" rel="noopener">微博</a>
+      <a href="https://github.com/JoeyLi2023" target="_blank" rel="noopener">GitHub</a>
+      <a href="./resume.html">简历</a>
     </div>
 
     <p class="colophon">© 2026 李阳 · 本站托管于 GitHub Pages</p>
