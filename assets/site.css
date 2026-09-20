@@ -237,7 +237,7 @@ a{color:inherit}
 .more a{text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:3px}
 .more a:hover{background:var(--signal);color:var(--paper)}
 
-/* ---------- 作品条带：高度与字号由内容分量决定 ---------- */
+/* ---------- 作品条带 ---------- */
 .work{border-top:1.5px solid var(--ink)}
 .item{
   display:grid;
@@ -277,8 +277,6 @@ a{color:inherit}
   font-weight:600;
   letter-spacing:.07em;
 }
-.item--lg{--pad:4.4rem;--size:3.7rem}
-.item--sm{--pad:1.5rem;--size:1.55rem}
 
 /* ---------- 简历：一段经历 ---------- */
 .block{margin-bottom:clamp(2.8rem,6vw,4.2rem)}
@@ -359,8 +357,6 @@ a{color:inherit}
   .hero-say{padding-bottom:0}
   .item{grid-template-columns:3.5rem minmax(0,1fr);gap:1rem 1.2rem}
   .item-desc{grid-column:2}
-  .item--lg{--size:2.4rem}
-  .item--sm{--size:1.7rem}
   .item-name{font-size:2rem}
 }
 
