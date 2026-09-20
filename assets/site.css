@@ -67,21 +67,20 @@ a{color:inherit}
 .topbar [aria-current="page"]{border-bottom-color:currentColor}
 
 /* ==========================================================
-   首页 Hero：视频占上半，纸带承接文字
-   视频保持满幅且不被压暗；文字落在实色纸带上，永远清晰。
+   首页 Hero：视频铺满首屏，个人介绍以白色毛玻璃盖在下方
+   - .film 永远正好一屏高，视频满宽铺满，超出部分从底部裁掉
+     （满宽 + 一屏 + 零裁剪三者几何上不可兼得，这里舍零裁剪，
+       且裁掉的正是被毛玻璃压住的那条区域）
+   - .hero-glass 半透明白 + saturate，上缘不加边线，文字规格
+     与改版前那条实色纸带完全一致
    ========================================================== */
-.hero{
-  min-height:100vh;
-  min-height:100svh;
-  display:grid;
-  grid-template-rows:1fr auto;
-}
-.hero .stage{
+.hero{position:relative}
+.film{
   position:relative;
+  width:100%;
+  height:100vh;
+  height:100svh;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  color:var(--paper);
   background:var(--sand);
 }
 .hero-video{
@@ -90,18 +89,37 @@ a{color:inherit}
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 34%;
+  object-position:center top;
+  display:block;
   z-index:0;
 }
 /* 自动播放被浏览器策略拦住时不显示任何 UI，静默重试 */
 
-.hero-band{
-  position:relative;
-  z-index:2;
-  background:var(--paper);
+/* 顶栏浮在画面上；画面偏浅，用墨色字加一层纸色柔光保证可读 */
+.hero .topbar{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:6;
+  padding-top:1.6rem;
+  color:var(--ink);
+  text-shadow:0 1px 10px rgba(253,251,247,.65);
+}
+
+.hero-glass{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  z-index:4;
+  color:var(--ink);
+  background:rgba(253,251,247,.35);
+  -webkit-backdrop-filter:saturate(150%);
+  backdrop-filter:saturate(150%);
   padding-block:2.4rem 2.8rem;
 }
-.hero-band-in{
+/* 不支持 backdrop-filter 时把白色加浓一点，保住可读性 */
+@supports not ((backdrop-filter:saturate(150%)) or (-webkit-backdrop-filter:saturate(150%))){
+  .hero-glass{background:rgba(253,251,247,.62)}
+}
+.hero-glass-in{
   display:grid;
   grid-template-columns:auto minmax(0,1fr);
   gap:1.2rem 3.5rem;
@@ -369,7 +387,16 @@ a{color:inherit}
 
 /* ---------- 响应式 ---------- */
 @media (max-width:820px){
-  .hero-band-in{grid-template-columns:1fr;align-items:start}
+  /* 窄屏画面只有一条，遮住就没画面了：视频回到 16:9 完整显示，
+     介绍落到画面下方的实色纸底上，顶栏仍浮在画面顶部 */
+  .film{height:auto;aspect-ratio:16 / 9}
+  .hero-video{object-fit:contain;object-position:center}
+  .hero-glass{
+    position:static;
+    background:var(--paper);
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  .hero-glass-in{grid-template-columns:1fr;align-items:start}
   .hero-say{padding-bottom:0}
   .item{grid-template-columns:3.5rem minmax(0,1fr);gap:1rem 1.2rem}
   .item-desc{grid-column:2}
