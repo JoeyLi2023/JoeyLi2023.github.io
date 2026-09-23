@@ -12,6 +12,8 @@
   --signal:#1A3FD9;
   --electric:#1A3FD9;
   --sand:#E8E4DA;
+  /* 次要/占位文字的灰，全站只有这一个灰阶变量 */
+  --muted:#7A766A;
 
   /* 字 */
   --sans:'Archivo','Noto Sans SC','Arial Black','Helvetica Neue','PingFang SC',sans-serif;
@@ -307,6 +309,223 @@ a{color:inherit}
 .edu-school{font-family:var(--sans);font-size:1rem;font-weight:600}
 .edu-major{font-size:.96rem}
 .edu-when{font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.05em;margin-left:auto}
+
+/* ==========================================================
+   详情页：作品 / Skill 各一条介绍页，头尾复用 v2 头部 / strip
+   ========================================================== */
+.back-link{
+  display:inline-block;
+  margin-bottom:1.4rem;
+  font-family:var(--sans);
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:.05em;
+  text-decoration:none;
+  border-bottom:1.5px solid rgba(253,251,247,.4);
+  padding-bottom:2px;
+  transition:border-color .18s;
+}
+.back-link:hover{border-bottom-color:var(--paper)}
+
+.detail-body h2{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:1.3rem;
+  letter-spacing:-.02em;
+  margin-top:2.4rem;
+  margin-bottom:.8rem;
+}
+.detail-body h2:first-child{margin-top:0}
+.detail-body p{font-size:1.02rem;line-height:1.75}
+.detail-body ul{padding-left:1.1rem;margin-top:.5rem}
+.detail-body li{font-size:1rem;line-height:1.6;margin-bottom:.55rem}
+.detail-body li::marker{color:var(--signal)}
+
+/* 还没有配图时占几个位置，一格一张图 + 图注，先用虚线框标出来 */
+.detail-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:1.4rem;
+  margin-top:2.8rem;
+}
+.gallery-slot{margin:0}
+.gallery-slot .ph-box{
+  aspect-ratio:4/3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1.5px dashed var(--sand);
+  font-family:var(--sans);
+  font-size:.78rem;
+  letter-spacing:.05em;
+  color:var(--muted);
+}
+.gallery-slot figcaption{
+  margin-top:.6rem;
+  font-family:var(--sans);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.05em;
+}
+
+/* ==========================================================
+   详情页 v2：产品页式头部——图和按钮在前，色块只留一条细导航
+   整页统一收窄版心（960px），头部/画廊/标签/正文不再宽度跳变
+   ========================================================== */
+.detail-page{--measure:960px}
+
+.detail-topbar{background:var(--signal);color:var(--paper)}
+.detail-topbar .topbar{padding-block:1rem}
+.detail-topbar :focus-visible{outline-color:var(--paper)}
+
+.detail-head{padding-block:clamp(2rem,4vw,3rem) clamp(1.6rem,3vw,2.2rem)}
+.detail-head .back-link{
+  border-bottom-color:rgba(15,15,15,.3);
+  color:var(--ink);
+}
+.detail-head .back-link:hover{border-bottom-color:var(--ink)}
+
+.detail-head-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:1.4rem 2rem;
+}
+.detail-head-main{display:flex;gap:1.1rem;align-items:flex-start}
+.detail-logo{
+  flex:none;
+  width:3.4rem;
+  height:3.4rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--sand);
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:1.3rem;
+  color:var(--signal);
+}
+.detail-head h1{
+  font-family:var(--sans);
+  font-weight:900;
+  font-size:clamp(1.9rem,3.6vw,2.6rem);
+  letter-spacing:-.025em;
+  line-height:1.05;
+}
+.detail-tagline{margin-top:.35rem;font-size:1rem;line-height:1.5}
+
+.detail-cta-btn{
+  flex:none;
+  display:inline-block;
+  padding:.75rem 1.5rem;
+  background:var(--signal);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:.9rem;
+  letter-spacing:.02em;
+  text-decoration:none;
+  transition:background-color .18s;
+}
+.detail-cta-btn:hover{background:var(--ink)}
+
+/* 悬浮目录：吸在视口左边，默认收成几条短线，点开展开成链接列表 */
+.toc{
+  position:fixed;
+  left:1.4rem;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+}
+.toc details{display:flex;align-items:stretch;gap:.7rem}
+.toc summary{
+  flex:none;
+  list-style:none;
+  cursor:pointer;
+  width:2.1rem;
+  padding:1rem .5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.34rem;
+  background:var(--paper);
+  border:1.5px solid var(--sand);
+}
+.toc summary::-webkit-details-marker{display:none}
+.toc summary::marker{content:""}
+.toc-tick{width:.9rem;height:2px;background:var(--muted)}
+.toc-panel{
+  flex:none;
+  align-self:flex-start;
+  width:14rem;
+  padding:1.1rem 1.2rem;
+  background:var(--paper);
+  border:1.5px solid var(--sand);
+}
+.toc-title{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  color:var(--muted);
+  margin-bottom:.7rem;
+}
+.toc-panel a{
+  display:block;
+  font-family:var(--sans);
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:.01em;
+  text-decoration:none;
+  padding-block:.4rem;
+  border-top:1px solid var(--sand);
+}
+.toc-panel a:first-of-type{border-top:none}
+.toc-panel a:hover{color:var(--signal)}
+
+/* 窄屏没地方放悬浮目录：展开后约 290px 宽，视口不够宽会盖住居中的正文，先隐藏 */
+@media (max-width:1600px){
+  .toc{display:none}
+}
+
+.detail-intro{margin-top:1.6rem;font-size:1.05rem;line-height:1.65}
+
+.detail-gallery--wide{grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.detail-gallery--wide .ph-box{aspect-ratio:16/9}
+
+.detail-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem 1.4rem;
+  margin-top:2rem;
+  padding-bottom:2rem;
+  border-bottom:1.5px solid var(--sand);
+  font-family:var(--sans);
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:var(--muted);
+}
+
+.detail-nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:1rem 2rem;
+  padding-block:2rem;
+  font-family:var(--sans);
+  font-size:.85rem;
+  font-weight:600;
+  letter-spacing:.05em;
+  border-top:1.5px solid var(--sand);
+}
+.detail-nav a{
+  text-decoration:none;
+  border-bottom:2px solid var(--signal);
+  padding-bottom:3px;
+}
+.detail-nav a:hover{background:var(--signal);color:var(--paper)}
 
 /* ==========================================================
    页脚：首页为底部一条细带；内页仍用大联系块

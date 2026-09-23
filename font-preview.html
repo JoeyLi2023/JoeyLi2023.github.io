@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-scheme="A">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>字体方案对比 · 我的产品 — 原型</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A3FD9'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@300;400;600&family=Inter:wght@400;500;600;800;900&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@300;400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+<!-- 霞鹜文楷：第三方 CDN，只有方案 F 用到 -->
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet" />
+
+<!-- 真实样式表，版式与线上完全一致，只让字体变 -->
+<link rel="stylesheet" href="assets/site.css?v=3" />
+
+<style>
+/* ===== A 现状（对照组）===== */
+[data-scheme="A"]{
+  --sans:'Archivo','Noto Sans SC','Arial Black','Helvetica Neue','PingFang SC',sans-serif;
+  --serif:'Newsreader','Noto Serif SC',Georgia,'Songti SC',serif;
+}
+
+/* ===== B IBM Plex：工程感，标题不再压迫 ===== */
+[data-scheme="B"]{
+  --sans:'IBM Plex Sans','Noto Sans SC','PingFang SC',sans-serif;
+  --serif:'IBM Plex Serif','Noto Serif SC',Georgia,'Songti SC',serif;
+}
+[data-scheme="B"] .masthead h1{font-weight:700;letter-spacing:-.03em}
+[data-scheme="B"] .item-name{font-weight:700;letter-spacing:-.015em}
+
+/* ===== C 编辑部：标题与产品名改用衬线 ===== */
+[data-scheme="C"]{
+  --sans:'Inter','Noto Sans SC','PingFang SC',sans-serif;
+  --serif:'Source Serif 4','Noto Serif SC',Georgia,'Songti SC',serif;
+}
+[data-scheme="C"] .masthead h1{
+  font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:.95;
+}
+[data-scheme="C"] .item-name{
+  font-family:var(--serif);font-weight:600;letter-spacing:-.005em;
+  font-size:var(--size,2.45rem);line-height:1.12;
+}
+
+/* ===== D 全无衬线：正文也不用衬线 ===== */
+[data-scheme="D"]{
+  --sans:'Inter','Noto Sans SC','PingFang SC',sans-serif;
+  --serif:'Inter','Noto Sans SC','PingFang SC',sans-serif;
+}
+[data-scheme="D"] body{line-height:1.72}
+[data-scheme="D"] .masthead h1{font-weight:900;letter-spacing:-.05em}
+[data-scheme="D"] .item-name{font-weight:800;letter-spacing:-.035em}
+[data-scheme="D"] .item-desc,[data-scheme="D"] .intro{font-size:.97rem}
+
+/* ===== E 系统字体：零网络加载 ===== */
+[data-scheme="E"]{
+  --sans:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue','Segoe UI',sans-serif;
+  --serif:Georgia,'Songti SC','Times New Roman',serif;
+}
+[data-scheme="E"] .masthead h1{font-weight:700;letter-spacing:-.035em}
+[data-scheme="E"] .item-name{font-weight:700;letter-spacing:-.02em}
+
+/* ===== F 霞鹜文楷：中文换成楷体，气质最不一样 =====
+   这个字族只有 400 一个字重，所以标题靠字号撑，不靠加粗 */
+[data-scheme="F"]{
+  --sans:'Inter','LXGW WenKai Screen','PingFang SC',sans-serif;
+  --serif:'Newsreader','LXGW WenKai Screen',Georgia,'Songti SC',serif;
+}
+[data-scheme="F"] body{line-height:1.85}
+[data-scheme="F"] .masthead h1{
+  font-weight:500;letter-spacing:-.01em;font-size:clamp(2.6rem,7vw,4.8rem);line-height:1.05;
+}
+[data-scheme="F"] .item-name{
+  font-weight:500;letter-spacing:0;font-size:var(--size,2.1rem);line-height:1.2;
+}
+[data-scheme="F"] .item-yr,[data-scheme="F"] .meta,
+[data-scheme="F"] .topbar,[data-scheme="F"] .masthead .role{font-weight:500}
+
+/* ===== 切换条：脚手架，不是设计的一部分 ===== */
+.fontbar{
+  position:sticky;top:0;z-index:99;
+  background:#111;color:#eee;
+  font:500 12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  padding:.7rem 1.2rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;
+}
+.fontbar b{color:#fff;margin-right:.4rem;font-weight:700}
+.fontbar button{
+  font:inherit;cursor:pointer;background:transparent;color:#bbb;
+  border:1px solid #444;border-radius:3px;padding:.3rem .6rem;
+}
+.fontbar button:hover{border-color:#888;color:#fff}
+.fontbar button[aria-pressed="true"]{background:#1A3FD9;border-color:#1A3FD9;color:#fff}
+.fontbar .desc{flex:1 1 100%;color:#8a8a8a;padding-top:.35rem;line-height:1.7}
+.fontbar .desc code{color:#d6d6d6}
+.fontbar .desc em{color:#ffb86b;font-style:normal}
+</style>
+</head>
+<body>
+
+<div class="fontbar">
+  <b>字体方案</b>
+  <button data-set="A" aria-pressed="true">A 现状</button>
+  <button data-set="B" aria-pressed="false">B IBM Plex</button>
+  <button data-set="C" aria-pressed="false">C 编辑部</button>
+  <button data-set="D" aria-pressed="false">D 全无衬线</button>
+  <button data-set="E" aria-pressed="false">E 系统字体</button>
+  <button data-set="F" aria-pressed="false">F 霞鹜文楷</button>
+  <span class="desc" id="desc"></span>
+</div>
+
+<header class="masthead">
+  <div class="wrap topbar">
+    <a class="mark" href="./">李阳 / JOEY LI</a>
+    <nav>
+      <a href="products.html" aria-current="page">我的产品</a>
+      <a href="skills.html">我的Skills</a>
+      <a href="resume.html">简历</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <h1>我的产品</h1>
+    <p class="role">自己写的，和带着团队做出来的</p>
+  </div>
+</header>
+
+<main>
+  <section class="section wrap" id="products">
+    <p class="intro">一个自己写的开源工具，两款在明略科技从 0 到 1 做出来的商业产品。</p>
+
+    <div class="work">
+      <a class="item" href="https://github.com/JoeyLi2023/prd-generator">
+        <span class="item-yr">2026</span>
+        <span class="item-name">PRD Generator</span>
+        <span class="item-desc">
+          把我写 PRD 的规则固化成工具。上传原型图或粘贴需求，生成结构化初稿，我只回答判断题。
+          最花时间的不是让模型写得更多，而是让它少写——不写 UI 布局、不写视觉样式，那是设计稿的职责。
+          <span class="meta">个人项目 · 开源 · Next.js + Claude + Supabase</span>
+        </span>
+      </a>
+
+      <a class="item" href="https://miaoa.mininglamp.com/home" target="_blank" rel="noopener">
+        <span class="item-yr">2025</span>
+        <span class="item-name">妙啊</span>
+        <span class="item-desc">
+          面向专业电商内容团队的一站式投流短视频制作平台。产品负责人，从 0 到 1 定义产品，牵头研发与设计团队完成落地，已正式对外售卖。
+          <span class="meta">明略科技 · 产品负责人 · 官网可访问</span>
+        </span>
+      </a>
+
+      <div class="item item--static">
+        <span class="item-yr">2025</span>
+        <span class="item-name">Octo</span>
+        <span class="item-desc">
+          企业级 AI 办公平台。Loop 方向产品负责人，负责人与 Agent 协作空间的产品定义与迭代。
+          <span class="meta">明略科技 · Loop 方向产品负责人</span>
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="strip" id="contact">
+  <div class="wrap strip-in">
+    <a class="strip-mail" href="mailto:joeyli2023@gmail.com">joeyli2023@gmail.com</a>
+    <a class="strip-link" href="https://weibo.com/u/7821111806" target="_blank" rel="noopener">微博</a>
+  </div>
+</footer>
+
+<script>
+const DESC = {
+  A: '拉丁 <code>Archivo 900</code>＋中文 <code>Noto Sans SC 900</code>；正文 <code>Newsreader</code>＋<code>Noto Serif SC</code>。标题极重、字面收得很紧，中文黑体拉到 900 会显得墩实。',
+  B: '拉丁 <code>IBM Plex Sans / Serif</code>＋中文 <code>Noto Sans SC</code>。最重只到 700，标题不再压迫，整体偏工程、克制。<em>注：IBM Plex 没有简体中文版，中文仍是 Noto。</em>',
+  C: '标题和产品名改用衬线 <code>Source Serif 4</code>＋<code>Noto Serif SC</code>，标签用 <code>Inter</code>。像杂志内页，中文宋体撑气质，适合以文字为主的个人站。',
+  D: '全站无衬线 <code>Inter</code>＋<code>Noto Sans SC</code>，正文也不用衬线。最干净、最像产品界面，小字号可读性最稳。',
+  E: '不加载任何网络字体：中文 <code>PingFang SC</code>，正文 <code>Georgia / 宋体</code>。首屏最快、无字体闪烁，在 Mac 和 iPhone 上最自然。<em>代价：Windows 访客会退到别的字体，观感不统一。</em>',
+  F: '中文换成楷体 <code>霞鹜文楷</code>，拉丁配 <code>Inter / Newsreader</code>。气质差别最大——温和、书卷气。<em>代价：走第三方 CDN，首屏多约 150KB；只有 400 一个字重，标题靠字号不靠加粗。</em>'
+};
+const root = document.documentElement;
+const desc = document.getElementById('desc');
+const btns = [...document.querySelectorAll('.fontbar button')];
+
+function apply(k){
+  root.dataset.scheme = k;
+  btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === k)));
+  desc.innerHTML = DESC[k];
+  try { localStorage.setItem('fontScheme', k); } catch(e){}
+}
+btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.set)));
+window.addEventListener('keydown', e => {
+  const k = ({1:'A',2:'B',3:'C',4:'D',5:'E',6:'F'})[e.key];
+  if (k) apply(k);
+});
+let saved = 'A';
+try { saved = localStorage.getItem('fontScheme') || 'A'; } catch(e){}
+apply(saved);
+</script>
+
+</body>
+</html>
