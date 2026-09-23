@@ -249,6 +249,8 @@ a{color:inherit}
   align-items:start;
   border-bottom:1.5px solid var(--ink);
   padding-block:var(--pad,2.4rem);
+  /* 右侧给箭头留白，否则描述文字会排到最右边和箭头叠在一起 */
+  padding-right:2.6rem;
   text-decoration:none;
   transition:background-color .2s,padding-left .2s;
 }
@@ -587,10 +589,10 @@ a{color:inherit}
   }
   .hero-glass-in{grid-template-columns:1fr;align-items:start}
   .hero-say{padding-bottom:0}
-  .item{grid-template-columns:4.3rem minmax(0,1fr);gap:1rem 1.2rem}
+  .item{grid-template-columns:4.3rem minmax(0,1fr);gap:1rem 1.2rem;padding-right:0}
   .item-desc{grid-column:2}
   .item-name{font-size:2rem}
-  /* 窄屏上箭头容易和长名字挤在一起，不显示 */
+  /* 窄屏上箭头容易和长名字挤在一起，不显示；隐藏后把留白还给文字 */
   .item::after{display:none}
 }
 
