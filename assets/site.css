@@ -19,8 +19,8 @@
   --sans:'Archivo','Noto Sans SC','Arial Black','Helvetica Neue','PingFang SC',sans-serif;
   --serif:'Newsreader','Noto Serif SC',Georgia,'Songti SC',serif;
 
-  /* 版心：阅读页覆写成 860px */
-  --measure:1180px;
+  /* 版心：全站统一 960px（详情页定下的规格，列表/简历/首页共用） */
+  --measure:960px;
 
   /* 节奏 */
   --gutter:1.5rem;
@@ -242,6 +242,7 @@ a{color:inherit}
 /* ---------- 作品条带 ---------- */
 .work{border-top:1.5px solid var(--ink)}
 .item{
+  position:relative;
   display:grid;
   grid-template-columns:5rem minmax(0,.8fr) minmax(0,1.2fr);
   gap:1.6rem;
@@ -256,6 +257,20 @@ a{color:inherit}
 /* 暂无可跳转的公开地址：不给 hover 反馈，免得看起来能点 */
 .item--static{cursor:default}
 .item--static:hover{background:none;color:var(--ink);padding-left:0}
+/* 行尾箭头：静态时唯一可见的“可点”提示，hover 时随整行翻白 */
+.item::after{
+  content:"→";
+  position:absolute;
+  right:0;
+  top:calc(var(--pad,2.4rem) + .15rem);
+  font-family:var(--sans);
+  font-size:1.5rem;
+  font-weight:600;
+  line-height:1;
+  color:var(--muted);
+  transition:color .2s;
+}
+.item:hover::after,.item:focus-visible::after{color:var(--paper)}
 .item-yr{
   font-family:var(--sans);
   font-size:.8rem;
@@ -372,8 +387,6 @@ a{color:inherit}
    详情页 v2：产品页式头部——图和按钮在前，色块只留一条细导航
    整页统一收窄版心（960px），头部/画廊/标签/正文不再宽度跳变
    ========================================================== */
-.detail-page{--measure:960px}
-
 .detail-topbar{background:var(--signal);color:var(--paper)}
 .detail-topbar .topbar{padding-block:1rem}
 .detail-topbar :focus-visible{outline-color:var(--paper)}
@@ -574,9 +587,11 @@ a{color:inherit}
   }
   .hero-glass-in{grid-template-columns:1fr;align-items:start}
   .hero-say{padding-bottom:0}
-  .item{grid-template-columns:3.5rem minmax(0,1fr);gap:1rem 1.2rem}
+  .item{grid-template-columns:4.3rem minmax(0,1fr);gap:1rem 1.2rem}
   .item-desc{grid-column:2}
   .item-name{font-size:2rem}
+  /* 窄屏上箭头容易和长名字挤在一起，不显示 */
+  .item::after{display:none}
 }
 
 /* ---------- 打印（简历 Cmd+P 直接成 PDF）---------- */
